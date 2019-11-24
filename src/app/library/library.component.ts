@@ -4,8 +4,12 @@ import { first } from 'rxjs/operators';
 import { User } from 'src/app/_models';
 import { UserService, AuthenticationService } from 'src/app/_services';
 
-@Component({ templateUrl: 'home.component.html' })
-export class HomeComponent {
+@Component({
+    selector: 'app-library',
+    templateUrl: './library.component.html',
+    styleUrls: ['./library.component.css']
+  })
+export class LibraryComponent {
     currentUser: User;
     userFromApi: User;
 

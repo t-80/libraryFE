@@ -3,14 +3,15 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-import { User, Role } from 'src/app/_models';
+import { User, Role, Provider } from 'src/app/_models';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const users: User[] = [
-            { id: 1, name: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
-            { id: 2, name: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.Customer }
+            { id: 1, name: 'admin', password: 'admin', provider: Provider.Local, authority: Role.Admin },
+            { id: 2, name: 'user', password: 'user', provider: Provider.Local, authority: Role.Customer },
+            { id: 2, name: 'librarian', password: 'librarian', provider: Provider.Local, authority: Role.Librarian }
         ];
 
         const authHeader = request.headers.get('Authorization');
@@ -27,11 +28,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 if (!user) return error('Username or password is incorrect');
                 return ok({
                     id: user.id,
-                    username: user.name,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    role: user.role,
-                    token: `fake-jwt-token.${user.role}`
+                    name: user.name,
+                    role: user.authority,
+                    token: `fake-jwt-token.${user.authority}`
                 });
             }
 
@@ -44,7 +43,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let id = parseInt(urlParts[urlParts.length - 1]);
 
                 // only allow normal users access to their own record
-                const currentUser = users.find(x => x.role === role);
+                const currentUser = users.find(x => x.authority === role);
                 if (id !== currentUser.id && role !== Role.Admin) return unauthorised();
 
                 const user = users.find(x => x.id === id);

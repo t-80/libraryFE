@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <div class="row">
+        <div class="col-xs-6" [hidden]="something" *ngFor="let librarian of librarian">
+            <p>{{ librarian.name }}</p>
+            <p>{{ librarian.email }}</p>
+            <p>{{ librarian.password }}</p>
+        </div>
+    </div>
+</div>

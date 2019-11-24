@@ -1,33 +1,48 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home';
-import { AdminComponent } from './admin';
-import { LoginComponent } from './login';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AllMaterialModule } from './_shared/all-angular-material.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { LibraryModule } from './library/library.module';
+import { AdminModule } from './admin/admin.module';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './_shared/page-not-found/page-not-found.component';
+import { MyHeaderComponent } from './_shared/header/header.component';
+import { AuthModule } from './auth/auth.module';
+
 
 @NgModule({
     imports: [
+        FormsModule,
+        ReactiveFormsModule,
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        BrowserAnimationsModule,
+        AllMaterialModule,
+        AuthModule,
+        AppRoutingModule,
+        AdminModule,
+        DashboardModule,
+        LibraryModule
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
-        AdminComponent,
-        LoginComponent
+        PageNotFoundComponent,
+        MyHeaderComponent
     ],
     providers: [
+        
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
