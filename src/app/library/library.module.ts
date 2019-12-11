@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LibraryComponent } from './library.component';
 import { AllMaterialModule } from '../_shared/all-angular-material.module';
+import { LibraryRoutingModule } from './library-routing.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { AllMaterialModule } from '../_shared/all-angular-material.module';
     ],
     imports: [
         CommonModule,
-        AllMaterialModule
+        AllMaterialModule,
+        LibraryRoutingModule
     ],
 })
 export class LibraryModule { }

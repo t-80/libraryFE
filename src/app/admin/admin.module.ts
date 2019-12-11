@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LibrarianListItemComponent } from './librarian-list/librarian-list-item/librarian-list-item.component';
 import { LibrarianListComponent } from './librarian-list/librarian-list.component';
 import { AllMaterialModule } from '../_shared/all-angular-material.module';
+import { AdminRoutingModule } from './admin-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { AllMaterialModule } from '../_shared/all-angular-material.module';
     ],
     imports: [
         CommonModule,
-        AllMaterialModule
+        AllMaterialModule,
+        AdminRoutingModule
     ],
 })
 export class AdminModule { }
