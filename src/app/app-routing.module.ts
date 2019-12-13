@@ -25,8 +25,8 @@ const appRoutes: Routes = [
   { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: 'library', loadChildren: './library/library.module#LibraryModule' },
-  { path: '',   redirectTo: '/', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  // { path: '',   redirectTo: '/', pathMatch: 'full' }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

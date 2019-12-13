@@ -29,7 +29,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok({
                     id: user.id,
                     name: user.name,
-                    role: user.authority,
+                    authority: user.authority,
                     token: `fake-jwt-token.${user.authority}`
                 });
             }
@@ -59,10 +59,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             // pass through any requests not handled above
             return next.handle(request);
         }))
-        // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
-        .pipe(materialize())
-        .pipe(delay(500))
-        .pipe(dematerialize());
+            // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+            .pipe(materialize())
+            .pipe(delay(500))
+            .pipe(dematerialize());
 
         // private helper functions
 

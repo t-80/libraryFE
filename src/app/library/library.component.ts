@@ -3,15 +3,16 @@ import { first } from 'rxjs/operators';
 
 import { User } from 'src/app/_models';
 import { UserService, AuthenticationService } from 'src/app/_services';
+import { CurrentUser } from '../_models/currentUser';
 
 @Component({
     selector: 'app-library',
     templateUrl: './library.component.html',
     styleUrls: ['./library.component.css']
-  })
+})
 export class LibraryComponent {
-    currentUser: User;
-    userFromApi: User;
+    currentUser: CurrentUser;
+    userFromApi: CurrentUser;
 
     constructor(
         private userService: UserService,
