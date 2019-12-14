@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../_guards';
-import { Role } from '../_models';
+import { AuthGuard } from '../_shared/_guards';
+import { Role } from '../_shared/_models';
 import { LibraryComponent } from './library.component';
 
 

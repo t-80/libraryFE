@@ -4,11 +4,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers';
+import { fakeBackendProvider } from './_shared/_helpers';
 
 import { AppComponent } from './app.component';
 
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_shared/_helpers';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AllMaterialModule } from './_shared/all-angular-material.module';

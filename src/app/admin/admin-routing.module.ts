@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LibrarianListComponent } from './librarian-list/librarian-list.component';
-import { AuthGuard } from '../_guards';
-import { Role } from '../_models';
+import { AuthGuard } from '../_shared/_guards';
+import { Role } from '../_shared/_models';
 
 
 const routes: Routes = [

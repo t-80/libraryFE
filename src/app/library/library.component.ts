@@ -1,9 +1,9 @@
 ﻿import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from 'src/app/_models';
-import { UserService, AuthenticationService } from 'src/app/_services';
-import { CurrentUser } from '../_models/currentUser';
+import { User } from 'src/app/_shared/_models';
+import { UserService, AuthenticationService } from 'src/app/_shared/_services';
+import { CurrentUser } from '../_shared/_models/currentUser';
 
 @Component({
     selector: 'app-library',
@@ -12,7 +12,7 @@ import { CurrentUser } from '../_models/currentUser';
 })
 export class LibraryComponent {
     currentUser: CurrentUser;
-    userFromApi: CurrentUser;
+    userFromApi: User;
 
     constructor(
         private userService: UserService,
@@ -23,6 +23,7 @@ export class LibraryComponent {
 
     ngOnInit() {
         this.userService.getById(this.currentUser.id).pipe(first()).subscribe(user => {
+            console.log(user);
             this.userFromApi = user;
         });
     }

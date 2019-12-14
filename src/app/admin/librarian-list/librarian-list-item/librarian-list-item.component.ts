@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Librarian } from 'src/app/_models/librarian';
+import { Librarian } from 'src/app/_shared/_models/librarian';
 
 @Component({
   selector: 'app-librarian-list-item',

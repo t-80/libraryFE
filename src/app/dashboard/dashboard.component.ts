@@ -1,9 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
-
-import { User } from 'src/app/_models';
-import { UserService, AuthenticationService } from 'src/app/_services';
-import { CurrentUser } from '../_models/currentUser';
+import { UserService, AuthenticationService } from 'src/app/_shared/_services';
+import { CurrentUser } from 'src/app/_shared/_models/currentUser';
 
 @Component({
     selector: 'app-dashboard',

@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from 'src/app/_models';
-import { UserService } from 'src/app/_services';
+import { User } from 'src/app/_shared/_models';
+import { UserService } from 'src/app/_shared/_services';
 
 @Component({
     selector: 'app-admin',

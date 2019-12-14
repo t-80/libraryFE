@@ -3,7 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-import { User, Role, Provider } from 'src/app/_models';
+import { User, Role, Provider } from 'src/app/_shared/_models';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -36,6 +36,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // get user by id - admin or user (user can only access their own record)
             if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
+
                 if (!isLoggedIn) return unauthorised();
 
                 // get id from request url
@@ -43,10 +44,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let id = parseInt(urlParts[urlParts.length - 1]);
 
                 // only allow normal users access to their own record
+                console.log(roleString)
+
                 const currentUser = users.find(x => x.authority === role);
                 if (id !== currentUser.id && role !== Role.Admin) return unauthorised();
 
                 const user = users.find(x => x.id === id);
+                
                 return ok(user);
             }
 

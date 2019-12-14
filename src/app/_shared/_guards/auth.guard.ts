@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, Route, CanLoad, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, CanActivateChild } from '@angular/router';
 
-import { AuthenticationService } from 'src/app/_services';
+import { AuthenticationService } from 'src/app/_shared/_services';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -30,7 +30,7 @@ export class AuthGuard implements CanLoad, CanActivate, CanActivateChild {
 
     let expectedRole: string;
     if (route) {
-      console.log(route);
+      // console.log(route);
       expectedRole = route.data.expectedRole;
 
       if (expectedRole) {
