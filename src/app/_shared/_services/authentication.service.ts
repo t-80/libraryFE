@@ -5,24 +5,23 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { User } from 'src/app/_shared/_models';
-import { CurrentUser } from '../_models/currentUser';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<CurrentUser>;
-    public currentUser: Observable<CurrentUser>;
+    private currentUserSubject: BehaviorSubject<User>;
+    public currentUser: Observable<User>;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): CurrentUser {
+    public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string): Observable<CurrentUser> {
-        return this.http.post<CurrentUser>(`${environment.apiUrl}/users/authenticate`, { username, password })
+    login(username: string, password: string): Observable<User> {
+        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

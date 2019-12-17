@@ -1,4 +1,6 @@
-﻿import { Role, Provider } from "./enums";
+﻿import { Provider } from './enums/provider';
+import { Role } from './enums/role';
+
 
 export class User {
     id: number;

@@ -13,7 +13,6 @@ export class UserService {
     }
 
     getById(id: number) {
-        console.log("User service by id")
         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
     }
 }

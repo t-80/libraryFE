@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/_shared/_services';
-import { Role } from 'src/app/_shared/_models';
+import { Role } from 'src/app/_shared/_models/enums/role';
 
 @Component({
     selector: 'app-login',
