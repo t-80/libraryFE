@@ -5,23 +5,33 @@ import { LibrarianListComponent } from './librarian-list/librarian-list.componen
 import { AllMaterialModule } from '../_shared/all-angular-material.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { LibrarianDetailsComponent } from './librarian-details/librarian-details.component';
-import { LibrarianNewComponent } from './librarian-new/librarian-new.component';
+import { RefreshComponent } from './refresh/refresh.component';
+import { MyHeaderComponent } from '../_shared/header/header.component';
+import { LibrarianAddEditComponent } from './librarian-add-edit/librarian-add-edit.component';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
+import { RefreshService } from '../_shared/_services/refresh.service';
 
 
 
 @NgModule({
     declarations: [
         AdminComponent,
-        LibrarianDetailsComponent,
-        LibrarianNewComponent,
+        RefreshComponent,
+        LibrarianAddEditComponent,
         LibrarianListComponent,
-        LibrarianListItemComponent
+        LibrarianListItemComponent,
+        MyHeaderComponent,
+        HomeComponent
     ],
     imports: [
         CommonModule,
         AllMaterialModule,
-        AdminRoutingModule
+        AdminRoutingModule,
+        FormsModule
     ],
+    providers: [
+        RefreshService
+    ]
 })
 export class AdminModule { }

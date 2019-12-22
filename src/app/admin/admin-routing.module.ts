@@ -4,8 +4,9 @@ import { LibrarianListComponent } from './librarian-list/librarian-list.componen
 import { AuthGuard } from '../_shared/_guards';
 import { Role } from '../_shared/_models/enums/role';
 import { AdminComponent } from './admin.component';
-import { LibrarianDetailsComponent } from './librarian-details/librarian-details.component';
-import { LibrarianNewComponent } from './librarian-new/librarian-new.component';
+import { RefreshComponent } from './refresh/refresh.component';
+import { LibrarianAddEditComponent } from './librarian-add-edit/librarian-add-edit.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -18,21 +19,24 @@ const routes: Routes = [
     },
     children: [
       {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
         path: 'list',
-        component: LibrarianListComponent
+        component: LibrarianListComponent,
+        children: [
+          {
+            path: 'edit/:id',
+            component: LibrarianAddEditComponent
+          },
+          {
+            path: 'add',
+            component: LibrarianAddEditComponent
+          },
+        ]
       },
-      {
-        path: 'list/:id/',
-        component: LibrarianDetailsComponent
-      },
-      {
-        path: 'new',
-        component: LibrarianNewComponent
-      },
-      {
-        path: 'details',
-        component: LibrarianDetailsComponent
-      }
+      
     ],
   },
 ];

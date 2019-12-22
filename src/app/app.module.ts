@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-import { fakeBackendProvider } from './_shared/_helpers';
+import { fakeAuthBackendProvider, fakeLibrarianBackendProvider } from './_shared/_helpers';
 
 import { AppComponent } from './app.component';
 
@@ -17,8 +17,8 @@ import { LibraryModule } from './library/library.module';
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './_shared/page-not-found/page-not-found.component';
-import { MyHeaderComponent } from './_shared/header/header.component';
 import { AuthModule } from './auth/auth.module';
+
 
 
 @NgModule({
@@ -38,8 +38,7 @@ import { AuthModule } from './auth/auth.module';
     ],
     declarations: [
         AppComponent,
-        PageNotFoundComponent,
-        MyHeaderComponent
+        PageNotFoundComponent
     ],
     providers: [
         
@@ -47,7 +46,8 @@ import { AuthModule } from './auth/auth.module';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
-        fakeBackendProvider
+        fakeAuthBackendProvider,
+        fakeLibrarianBackendProvider
     ],
     bootstrap: [AppComponent]
 })

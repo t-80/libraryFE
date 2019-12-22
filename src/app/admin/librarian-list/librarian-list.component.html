@@ -1,8 +1,8 @@
+<app-refresh></app-refresh>
 <div class="wrapper">
     <div class="row">
-        <div class="col-xs-6" [hidden]="something" *ngFor="let librarian of librarian">
+        <div class="col-xs-6" [hidden]="something" *ngFor="let librarian of librarians">
             <app-librarian-list-item [librarian]="librarian"></app-librarian-list-item>
         </div>
     </div>
 </div>
-<p>List of librarians here</p>

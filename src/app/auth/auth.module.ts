@@ -6,10 +6,12 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AllMaterialModule } from '../_shared/all-angular-material.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthComponent } from './auth.component';
 
 
 @NgModule({
   declarations: [
+    AuthComponent,
     LoginComponent,
     SignupComponent
   ],

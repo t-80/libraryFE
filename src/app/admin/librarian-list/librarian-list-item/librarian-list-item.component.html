@@ -1,11 +1,16 @@
 <mat-card class="example-card">
     <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ librarian.name }}</mat-card-title>
+        <mat-card-title>{{ librarian.id }}</mat-card-title>
     </mat-card-header>
-    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <img mat-card-image src="{{ librarian.photo }}" alt="Photo of a {{ librarian.name }}">
     <mat-card-content>
         <p>{{ librarian.email }}</p>
-        <p>{{ librarian.password }}</p>
+        <p>{{ librarian.name }}</p>
     </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [routerLink]="['edit', librarian.id]">Edit</button>
+        <div fxFlex></div>
+        <button mat-raised-button color="warn" (click)="deleteLibrarian(librarian.id)">Remove</button>
+      </mat-card-actions>
 </mat-card>
+<br/>
