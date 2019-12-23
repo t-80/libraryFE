@@ -6,14 +6,14 @@ import { Librarian } from 'src/app/_shared/_models/librarian';
 import { slideInOutAnimation } from 'src/app/_shared/_animations/slide-in-out.animation';
 
 @Component({
-  selector: 'app-librarian-add-edit',
-  templateUrl: './librarian-add-edit.component.html',
-  styleUrls: ['./librarian-add-edit.component.css']
-  //  // make slide in/out animation available to this component
-  //  animations: [slideInOutAnimation],
+    selector: 'app-librarian-add-edit',
+    templateUrl: './librarian-add-edit.component.html',
+    styleUrls: ['./librarian-add-edit.component.css'],
+    // make slide in/out animation available to this component
+    animations: [slideInOutAnimation],
 
-  //  // attach the slide in/out animation to the host (root) element of this component
-  //  host: { '[@slideInOutAnimation]': '' }
+    // attach the slide in/out animation to the host (root) element of this component
+    host: { '[@slideInOutAnimation]': '' }
 })
 export class LibrarianAddEditComponent implements OnInit {
 
@@ -29,7 +29,7 @@ export class LibrarianAddEditComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-      console.log("ONINIT")
+        console.log("ONINIT")
         this.title = 'Add Librarian';
         const librarianId = Number(this.route.snapshot.params['id']);
         if (librarianId) {

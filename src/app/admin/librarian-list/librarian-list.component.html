@@ -4,5 +4,8 @@
         <div class="col-xs-6" [hidden]="something" *ngFor="let librarian of librarians">
             <app-librarian-list-item [librarian]="librarian"></app-librarian-list-item>
         </div>
+        <div class="col-xs-6">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>

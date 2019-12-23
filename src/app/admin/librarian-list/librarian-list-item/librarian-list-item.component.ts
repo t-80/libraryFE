@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Librarian } from 'src/app/_shared/_models/librarian';
 import { Router } from '@angular/router';
 
@@ -9,17 +9,11 @@ import { Router } from '@angular/router';
 })
 export class LibrarianListItemComponent implements OnInit {
 
-  @Input () librarian: Librarian
+  @Input() librarian: Librarian
   constructor(
     private router: Router,
   ) { }
 
   ngOnInit() {
-  }
-
-  editLibrarian(id: number) {
-    console.log(id);
-    this.router.navigate(['admin/list/edit', id]);
-
   }
 }

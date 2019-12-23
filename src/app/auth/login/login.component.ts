@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
                     let url: string;
                     switch (data.authority) {
                         case Role.Admin:
-                            url = '/admin'
+                            url = '/admin/home'
                             break;
                         case Role.Customer:
                             url = '/library'

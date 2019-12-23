@@ -15,12 +15,10 @@ export class FakeAuthBackendInterceptor implements HttpInterceptor {
             { id: 3, name: 'librarian', password: 'librarian', provider: Provider.Local, authority: Role.Librarian }
         ];
 
-        const { url, method, headers, body } = request;
+        const { url, method, headers, body } = request as HttpRequest<any>;
         const authHeader = request.headers.get('Authorization');
         const isLoggedInValue = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
         const roleString = isLoggedInValue && authHeader.split('.')[1];
-        // const role = roleString ? stringToEnumValue<typeof Role, Role>(Role, roleString) : null;
-        //  const role = roleString ? Role[roleString] : null;
         const role = roleString as Role;
 
 
@@ -100,13 +98,13 @@ export class FakeAuthBackendInterceptor implements HttpInterceptor {
 
         }
 
-         function deleteUser() {
-             if (!isLoggedIn()) return unauthorized();
+        function deleteUser() {
+            if (!isLoggedIn()) return unauthorized();
 
-             users = users.filter(x => x.id !== idFromUrl());
-             localStorage.setItem('users', JSON.stringify(users));
-             return ok();
-         }
+            users = users.filter(x => x.id !== idFromUrl());
+            localStorage.setItem('users', JSON.stringify(users));
+            return ok();
+        }
 
         // helper functions
 
@@ -130,10 +128,6 @@ export class FakeAuthBackendInterceptor implements HttpInterceptor {
         function idFromUrl() {
             const urlParts = url.split('/');
             return parseInt(urlParts[urlParts.length - 1]);
-        }
-
-        function stringToEnumValue  <ET, T>(enumObj: ET, str: string): T {
-            return (enumObj as any)[Object.keys(enumObj).filter(k => (enumObj as any)[k] === str)[0]];
         }
     }
 }
