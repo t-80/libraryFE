@@ -1,3 +1,50 @@
-<div>
-    <p>Avocado</p>
+<div class="signup-container">
+    <form class="signup-container" [formGroup]="signupForm" (ngSubmit)="signup()">
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" name="email" />
+            <mat-error *ngIf="form.email.hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="form.email.hasError('email')">Email is invalid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Name" type="text" formControlName="name" name="name" />
+            <mat-error *ngIf="form.name.errors && form.name.errors.required">Name is required</mat-error>
+            <mat-error *ngIf="form.name.invalid">Name is invalid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <!--mat-label>Options</mat-label-->
+            <mat-select matInput placeholder="Options" formControlName="options" name="options" required>
+                <mat-option *ngFor="let o of options" [value]="o">{{ o }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.options.errors && form.options.errors.required">Options is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Password" type="password" formControlName="password" name="password" />
+            <mat-error *ngIf="form.password.errors && form.password.errors.required">Password is required
+            </mat-error>
+            <mat-error *ngIf="form.password.hasError('minlength')">Password must be at least 6 characters
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="ConfirmPassword" type="password" formControlName="confirmPassword"
+                name="confirmPassword" />
+            <mat-error *ngIf="form.confirmPassword.errors && form.confirmPassword.errors.required">Confirm
+                password is required</mat-error>
+            <mat-error *ngIf="form.confirmPassword.errors && form.confirmPassword.errors.mustMatch">Passwords must match
+            </mat-error>
+        </mat-form-field>
+
+        <div class="signup-form-buttons">
+            <button mat-button type="submit" class="button" [disabled]="signupForm.invalid">
+                Sign up
+            </button>
+        </div>
+    </form>
 </div>
