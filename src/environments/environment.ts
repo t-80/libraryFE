@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+  firebase: {
+    apiKey: "AIzaSyDm5-QX7HNDy2H4jX7RxxdSa1BV_xAYDYg",
+    authDomain: "library-8393c.firebaseapp.com",
+    databaseURL: "https://library-8393c.firebaseio.com",
+    projectId: "library-8393c",
+    storageBucket: "library-8393c.appspot.com",
+    messagingSenderId: "846769383641"
+  }
 };
 
 /*

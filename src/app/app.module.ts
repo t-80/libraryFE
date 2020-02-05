@@ -19,6 +19,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './_shared/page-not-found/page-not-found.component';
 import { AuthModule } from './auth/auth.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 
 @NgModule({
@@ -34,14 +39,19 @@ import { AuthModule } from './auth/auth.module';
         AppRoutingModule,
         AdminModule,
         DashboardModule,
-        LibraryModule
+        LibraryModule,
+        FormsModule,
+
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireDatabaseModule
     ],
     declarations: [
         AppComponent,
         PageNotFoundComponent
     ],
     providers: [
-        
+
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
