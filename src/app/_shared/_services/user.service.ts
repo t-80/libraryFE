@@ -16,6 +16,7 @@ import { Observable, from } from 'rxjs';
 //     }
 
 //     getById(id: number) {
+//         console.log("get user")
 //         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
 //     }
 
@@ -32,6 +33,7 @@ export class UserService {
 
 
     getAll() {
+        console.log("getAll")
         return this.firestore.collection<User>('users').snapshotChanges().pipe(map(actions => {
             return actions.map(action => {
                 const user = action.payload.doc.data() as User;
@@ -42,11 +44,12 @@ export class UserService {
 
     }
 
-    getById(id): Observable<User> {
-        return this.firestore.collection<User>('users').doc<User>(id).valueChanges();
+    getById(id: number): Observable<User> {
+        console.log("betById" + id)
+        return this.firestore.collection<User>('users').doc<User>(id.toString()).valueChanges();
     }
 
-    delete(id) {
-        this.firestore.collection<User>('users').doc<User>(id).delete();
+    delete(id: number) {
+        this.firestore.collection<User>('users').doc<User>(id.toString()).delete();
     }
 }
