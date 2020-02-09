@@ -19,10 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './_shared/page-not-found/page-not-found.component';
 import { AuthModule } from './auth/auth.module';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { Observable } from "rxjs";
+
+import { SnackbarComponent } from './_shared/layout/snackbar/snackbar.component';
 
 
 
@@ -40,15 +39,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
         AdminModule,
         DashboardModule,
         LibraryModule,
-        FormsModule,
-
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
-        AngularFireDatabaseModule
+        FormsModule
     ],
     declarations: [
         AppComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        SnackbarComponent
     ],
     providers: [
 
@@ -59,7 +55,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
         fakeAuthBackendProvider,
         fakeLibrarianBackendProvider
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [SnackbarComponent]
 })
 
 export class AppModule { }

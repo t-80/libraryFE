@@ -10,9 +10,9 @@ import { Role } from 'src/app/_shared/_models/enums/role';
 export class FakeAuthBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let users: User[] = [
-            { id: 1, name: 'admin', password: 'admin', provider: Provider.Local, authority: Role.Admin },
-            { id: 2, name: 'user', password: 'user', provider: Provider.Local, authority: Role.Customer },
-            { id: 3, name: 'librarian', password: 'librarian', provider: Provider.Local, authority: Role.Librarian }
+            { id: 1, name: 'admin', email:'', password: 'admin', provider: Provider.Local, authority: Role.Admin },
+            { id: 2, name: 'user', email:'', password: 'user', provider: Provider.Local, authority: Role.Customer },
+            { id: 3, name: 'librarian', email:'', password: 'librarian', provider: Provider.Local, authority: Role.Librarian }
         ];
 
         const { url, method, headers, body } = request as HttpRequest<any>;
@@ -51,11 +51,11 @@ export class FakeAuthBackendInterceptor implements HttpInterceptor {
 
         function authenticate() {
             const { username, password } = body;
-            const user = users.find(x => x.name === request.body.username && x.password === request.body.password);
+            const user = users.find(x => x.email === request.body.username && x.password === request.body.password);
             if (!user) return error('Username or password is incorrect');
             return ok({
                 id: user.id,
-                name: user.name,
+                email: user.email,
                 authority: user.authority,
                 token: `fake-jwt-token.${user.authority}`
             });
